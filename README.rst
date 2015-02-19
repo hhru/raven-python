@@ -1,3 +1,26 @@
+About fork
+======
+
+This fork only includes:
+
+* debianization
+* remove python 2.x incompatible files (because of pycompile stage in debian postinstall)
+
+How to build .deb & upload it to debian repository:
+
+* ``apt-get install python-all debhelper``
+* ``pip install --user stdeb``
+* configure your ``~/.dput.cf``
+* configure your gpg keys
+* ``git clone git@github.com:hhru/raven-python.git``
+* set postfix for debian version in ``setup.cfg``
+* ``cd raven-python``
+* ``python setup.py --command-packages=stdeb.command bdist_deb``
+* ``cd deb_dist``
+* ``debsign python-raven_X.Y.Z-hhN_amd64.changes``
+* ``dput hh-apps python-raven_X.Y.Z-hhN_amd64.changes``
+
+
 Raven
 ======
 
